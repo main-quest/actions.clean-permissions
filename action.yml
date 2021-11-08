@@ -8,4 +8,6 @@ runs:
         shell: bash
         run: |
           echo TODO this is not a long term solution as each job in each workflow file needs to execute this
-          sudo chown -R $USER:$USER $GITHUB_WORKSPACE
+          # Commented: on macOS, group $USER doesn't seem to exist, so it's better to use just user
+          # sudo chown -R $USER:$USER $GITHUB_WORKSPACE
+          sudo chown -R $USER: $GITHUB_WORKSPACE
