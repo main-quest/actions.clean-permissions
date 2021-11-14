@@ -4,7 +4,14 @@ description: "Sets all permissions in github work dir to current user"
 runs:
   using: "composite"
   steps:  
-      - name: Fix permissions from prev jobs (docker creates files as root)
+      - name: Fix permissions from prev jobs (docker creates files as root) [WIN]
+        if: runner.os == 'windows'
+        shell: powershell
+        run: |
+          echo TODO if needed
+
+      - name: Fix permissions from prev jobs (docker creates files as root) [UNIX]
+        if: runner.os != 'windows'
         shell: bash
         run: |
           echo TODO this is not a long term solution as each job in each workflow file needs to execute this
